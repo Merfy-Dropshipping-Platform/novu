@@ -32,11 +32,7 @@ const enterpriseImports = (): Array<Type | DynamicModule | Promise<DynamicModule
 };
 
 function getControllers() {
-  if (isClerkEnabled() || isBetterAuthEnabled()) {
-    return [EEOrganizationController];
-  }
-
-  return [OrganizationController];
+  return [EEOrganizationController];
 }
 
 @Module({
