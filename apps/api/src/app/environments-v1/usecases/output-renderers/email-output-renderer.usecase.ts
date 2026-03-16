@@ -859,26 +859,10 @@ export class EmailOutputRendererUsecase extends BaseTranslationRendererUsecase {
 
   private async appendNovuBranding(
     html: string,
-    organizationId: string,
-    organization?: OrganizationEntity
+    _organizationId: string,
+    _organization?: OrganizationEntity
   ): Promise<string> {
-    try {
-      const { removeNovuBranding } = await this.getOrganizationSettings.execute(
-        GetOrganizationSettingsCommand.create({
-          organizationId,
-          organization,
-        })
-      );
-
-      if (removeNovuBranding) {
-        return html;
-      }
-
-      return this.insertBrandingHtml(html);
-    } catch (error) {
-      // If there's any error fetching organization, return original HTML to avoid breaking emails
-      return html;
-    }
+    return html;
   }
 
   private insertBrandingHtml(html: string): string {
