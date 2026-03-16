@@ -2,7 +2,7 @@ name: Build Merfy Novu Images
 
 on:
   push:
-    branches: [next]
+    branches: [next, merfy-v3.13.0]
   workflow_dispatch:
 
 permissions:
@@ -12,6 +12,7 @@ permissions:
 env:
   REGISTRY: ghcr.io
   REGISTRY_OWNER: merfy-dropshipping-platform
+  BUILD_REF: merfy-v3.13.0
 
 jobs:
   build-api:
@@ -20,6 +21,8 @@ jobs:
     steps:
       - name: Git Checkout
         uses: actions/checkout@v4
+        with:
+          ref: ${{ env.BUILD_REF }}
 
       - uses: ./.github/actions/free-space
         name: Free disk space
@@ -30,7 +33,7 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22.22.1
+          node-version: 20.18.1
           cache: pnpm
 
       - name: Install dependencies
@@ -62,7 +65,9 @@ jobs:
 
       - name: Push API image
         run: |
+          docker tag novu-api ${{ env.REGISTRY }}/${{ env.REGISTRY_OWNER }}/novu-api:3.13.0
           docker tag novu-api ${{ env.REGISTRY }}/${{ env.REGISTRY_OWNER }}/novu-api:latest
+          docker push ${{ env.REGISTRY }}/${{ env.REGISTRY_OWNER }}/novu-api:3.13.0
           docker push ${{ env.REGISTRY }}/${{ env.REGISTRY_OWNER }}/novu-api:latest
 
   build-dashboard:
@@ -71,6 +76,8 @@ jobs:
     steps:
       - name: Git Checkout
         uses: actions/checkout@v4
+        with:
+          ref: ${{ env.BUILD_REF }}
 
       - uses: ./.github/actions/free-space
         name: Free disk space
@@ -93,5 +100,7 @@ jobs:
 
       - name: Push Dashboard image
         run: |
+          docker tag novu-dashboard ${{ env.REGISTRY }}/${{ env.REGISTRY_OWNER }}/novu-dashboard:3.13.0
           docker tag novu-dashboard ${{ env.REGISTRY }}/${{ env.REGISTRY_OWNER }}/novu-dashboard:latest
+          docker push ${{ env.REGISTRY }}/${{ env.REGISTRY_OWNER }}/novu-dashboard:3.13.0
           docker push ${{ env.REGISTRY }}/${{ env.REGISTRY_OWNER }}/novu-dashboard:latest
