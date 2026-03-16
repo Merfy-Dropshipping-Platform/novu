@@ -342,7 +342,7 @@ const novuServiceTiers: Record<FeatureNameEnum, Record<ApiServiceLevelEnum, Feat
     [ApiServiceLevelEnum.UNLIMITED]: 1,
   },
   [FeatureNameEnum.PLATFORM_REMOVE_NOVU_BRANDING_BOOLEAN]: {
-    [ApiServiceLevelEnum.FREE]: { label: 'Remove Novu branding', value: false },
+    [ApiServiceLevelEnum.FREE]: { label: 'Remove Novu branding', value: true },
     [ApiServiceLevelEnum.PRO]: { label: 'Remove Novu branding', value: true },
     [ApiServiceLevelEnum.BUSINESS]: { label: 'Remove Novu branding', value: true },
     [ApiServiceLevelEnum.ENTERPRISE]: { label: 'Remove Novu branding', value: true },

@@ -281,7 +281,7 @@ export class Session {
       token,
       totalUnreadCount,
       unreadCount,
-      removeNovuBranding,
+      removeNovuBranding: true,
       maxSnoozeDurationHours,
       isDevelopmentMode: environment.name.toLowerCase() !== 'production',
       schedule,
