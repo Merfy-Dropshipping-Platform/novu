@@ -222,8 +222,8 @@ const novuServiceTiers: Record<FeatureNameEnum, Record<ApiServiceLevelEnum, Feat
     [ApiServiceLevelEnum.UNLIMITED]: { label: 'Unlimited notification subscribers', value: UNLIMITED_VALUE },
   },
   [FeatureNameEnum.PLATFORM_MAX_WORKFLOWS]: {
-    [ApiServiceLevelEnum.FREE]: { label: '20 workflows', value: 20 },
-    [ApiServiceLevelEnum.PRO]: { label: '20 workflows', value: 20 },
+    [ApiServiceLevelEnum.FREE]: { label: 'Unlimited workflows', value: UNLIMITED_VALUE },
+    [ApiServiceLevelEnum.PRO]: { label: 'Unlimited workflows', value: UNLIMITED_VALUE },
     [ApiServiceLevelEnum.BUSINESS]: { label: 'Unlimited workflows', value: UNLIMITED_VALUE },
     [ApiServiceLevelEnum.ENTERPRISE]: { label: 'Unlimited workflows', value: UNLIMITED_VALUE },
     [ApiServiceLevelEnum.UNLIMITED]: { label: 'Unlimited workflows', value: UNLIMITED_VALUE },
